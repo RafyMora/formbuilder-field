@@ -4,20 +4,13 @@
 [![Total Downloads][ico-downloads]][link-downloads]
 [![The Whole Fruit Manifesto](https://img.shields.io/badge/writing%20standard-the%20whole%20fruit-brightgreen)](https://github.com/the-whole-fruit/manifesto)
 
-> **// TODO: customize this description and delete this line**
+This package add form builder for projects that use the [Backpack for Laravel](https://backpackforlaravel.com/) administration panel.
 
-This package provides XXX functionality for projects that use the [Backpack for Laravel](https://backpackforlaravel.com/) administration panel. 
+More exactly, it adds a [FormBuilder](https://formbuilder.online/) and saving in database. It use JQuery and Bootstrap. All data off this form are save in JSon in database.
 
-More exactly, it adds X and Y so that you can easily do Z.
-
+This package send form by mail or/and creater an enter in form_result database.
 
 ## Screenshots
-
-> **// TODO: add a screenshot and delete these lines;** 
-> to add a screenshot to a github markdown file, the easiest way is to
-> open an issue, upload the screenshot there with drag&drop, then close the issue;
-> you now have that image hosted on Github's servers; so you can then right-click 
-> the image to copy its URL, and use that URL wherever you want (for example... here)
 
 ![Backpack Toggle Field Addon](https://via.placeholder.com/600x250?text=screenshot+needed)
 
@@ -27,7 +20,11 @@ More exactly, it adds X and Y so that you can easily do Z.
 Via Composer
 
 ``` bash
-composer require rafy-mora/formbuilder-field
+composer require --dev rafy-mora/formbuilder-field
+
+php artisan migrate
+
+php artisan vendor:publish --provider="RafyMora\FormbuilderField\AddonServiceProvider" --tag="config"
 ```
 
 ## Usage
