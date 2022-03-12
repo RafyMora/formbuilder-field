@@ -19,7 +19,7 @@ class FormbuilderCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+    // use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -48,16 +48,6 @@ class FormbuilderCrudController extends CrudController
                 'type' => 'text',
             ],
             [
-                'name' => 'intro',
-                'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.intro')),
-                'type' => 'text',
-            ],
-            [
-                'name' => 'form',
-                'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.form')),
-                'type' => 'text',
-            ],
-            [
                 'name' => 'in_database',
                 'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.in_database')),
                 'type' => 'check',
@@ -65,6 +55,16 @@ class FormbuilderCrudController extends CrudController
             [
                 'name' => 'by_mail',
                 'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.by_mail')),
+                'type' => 'check',
+            ],
+            [
+                'name' => 'display_title',
+                'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.display_title')),
+                'type' => 'check',
+            ],
+            [
+                'name' => 'display_intro',
+                'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.display_intro')),
                 'type' => 'check',
             ],
         ]);
@@ -88,14 +88,38 @@ class FormbuilderCrudController extends CrudController
             [
                 'name' => 'intro',
                 'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.intro')),
-                'type' => 'textarea',
+                'type' => 'summernote',
+                'options' => [
+                    'toolbar' => [
+                        ['style', ['bold', 'italic', 'underline', 'clear']],
+                        ['font', ['strikethrough', 'superscript', 'subscript']],
+                        ['insert', ['link','hr']],
+                        ['fontsize', ['fontsize']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['height', ['height']]
+                    ]
+                ],
             ],
+            // FORM BUILDER VIEW
             [
                 'name' => 'form',
                 'type' => 'form_builder',
                 'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.form')),
                 'view_namespace' => 'rafy-mora.formbuilder-field::fields',
-                'tab' => __('rafy-mora.formbuilder-field::formbuilder.labels.form_tab')
+                'tab' => __('rafy-mora.formbuilder-field::formbuilder.labels.form_tab'),
+                'hint' => __('rafy-mora.formbuilder-field::formbuilder.labels.hint_form')
+            ],
+            // CONFIG TABS
+            [
+                'name' => 'text_button',
+                'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.text_button')),
+                'type' => 'text',
+                'wrapper' => [
+                    'class' => 'form-group col-md-6'
+                ],
+                'default' => __('rafy-mora.formbuilder-field::formbuilder.labels.default_text_button'),
+                'tab' => __('rafy-mora.formbuilder-field::formbuilder.labels.config_tab')
             ],
             [
                 'name' => 'in_database',
@@ -141,7 +165,7 @@ class FormbuilderCrudController extends CrudController
             ],
         ]);
     }
-    
+
     /**
      * Define what happens when the Update operation is loaded.
      * 

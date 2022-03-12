@@ -17,6 +17,7 @@ class AddFormBuilderTables extends Migration
             $table->id();
             $table->string('title', 255);
             $table->text('intro')->nullable();
+            $table->text('text_button');
             $table->text('form')->nullable();
             $table->boolean('in_database')->default(0);
             $table->boolean('by_mail')->default(0);

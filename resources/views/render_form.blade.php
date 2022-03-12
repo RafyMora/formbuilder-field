@@ -6,14 +6,15 @@
 
 <div class="col-md-12 bold-labels">
     @if($form->display_title)
-    <h3>{{ $form->title }}</h3>
+        <h2>{{ $form->title }}</h2>
     @endif
     @if($form->display_intro)
-        <p>{{ $form->intro }}</p>
+        <p>{!! $form->intro !!}</p>
     @endif
     <form action="/" method="POST">
         @csrf
         <div class="render-wrap"></div>
+        <input type="submit" value="{{ $form->text_button }}" name="submit">
     </form>
 </div>
 

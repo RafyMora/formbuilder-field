@@ -25,9 +25,10 @@ class FormbuilderRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:5|max:255',
-            'intro' => 'nullable',
-            'form'  => 'required',
+            'title'       => 'required|min:3|max:255',
+            'intro'       => 'nullable',
+            'form'        => 'required',
+            'text_button' => 'required|min:1|max:255',
         ];
     }
 
@@ -39,9 +40,10 @@ class FormbuilderRequest extends FormRequest
     public function attributes()
     {
         return [
-            'title' => __('rafy-mora.formbuilder-field::formbuilder.labels.title'),
-            'intro' => __('rafy-mora.formbuilder-field::formbuilder.labels.intro'),
-            'form'  => __('rafy-mora.formbuilder-field::formbuilder.labels.form'),
+            'title'       => __('rafy-mora.formbuilder-field::formbuilder.labels.title'),
+            'intro'       => __('rafy-mora.formbuilder-field::formbuilder.labels.intro'),
+            'form'        => __('rafy-mora.formbuilder-field::formbuilder.labels.form'),
+            'text_button' => __('rafy-mora.formbuilder-field::formbuilder.labels.text_button'),
         ];
     }
 
