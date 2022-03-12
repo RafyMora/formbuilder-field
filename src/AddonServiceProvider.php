@@ -51,4 +51,24 @@ class AddonServiceProvider extends ServiceProvider
             $this->bootForConsole();
         }
     }
+
+    /**
+     * Console-specific booting.
+     *
+     * @return void
+     */
+    protected function bootForConsole(): void
+    {
+        // Publishing assets.
+        if ($this->packageDirectoryExistsAndIsNotEmpty('resources/assets')) {
+            $this->publishes([
+                $this->packageAssetsPath() => $this->publishedAssetsPath(),
+            ], 'assets');
+        }
+
+        // Registering package commands.
+        if (!empty($this->commands)) {
+            $this->commands($this->commands);
+        }
+    }
 }

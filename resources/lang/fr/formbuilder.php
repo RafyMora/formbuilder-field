@@ -8,6 +8,6 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'something_to_translate'    => 'Something to translate',
+    'form_tabs'    => 'Formulaire',
 
 ];

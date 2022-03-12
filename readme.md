@@ -25,6 +25,7 @@ composer require --dev rafy-mora/formbuilder-field
 php artisan migrate
 
 php artisan vendor:publish --provider="RafyMora\FormbuilderField\AddonServiceProvider" --tag="config"
+php artisan vendor:publish --provider="RafyMora\FormbuilderField\AddonServiceProvider" --tag="assets"
 ```
 
 ## Usage

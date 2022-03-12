@@ -41,13 +41,28 @@ class FormbuilderCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        
-
-        /**
-         * Columns can be defined using the fluent syntax or array syntax:
-         * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']); 
-         */
+        $this->crud->addColumns([
+            [
+                'name' => 'title',
+                'type' => 'text',
+            ],
+            [
+                'name' => 'description',
+                'type' => 'text',
+            ],
+            [
+                'name' => 'form',
+                'type' => 'text',
+            ],
+            [
+                'name' => 'in_database',
+                'type' => 'text',
+            ],
+            [
+                'name' => 'by_mail',
+                'type' => 'text',
+            ],
+        ]);
     }
 
     /**
@@ -59,7 +74,30 @@ class FormbuilderCrudController extends CrudController
     protected function setupCreateOperation()
     {
         CRUD::setValidation(FormbuilderRequest::class);
-
+        $this->crud->addFields([
+            [
+                'name' => 'title',
+                'type' => 'text',
+            ],
+            [
+                'name' => 'description',
+                'type' => 'textarea',
+            ],
+            [
+                'name' => 'form',
+                'type' => 'form_builder',
+                'view_namespace' => 'rafy-mora.formbuilder-field::fields',
+                'tab' => __('rafy-mora.formbuilder-field::formbuilder.form_tabs')
+            ],
+            [
+                'name' => 'in_database',
+                'type' => 'boolean',
+            ],
+            [
+                'name' => 'by_mail',
+                'type' => 'boolean',
+            ],
+        ]);
         
 
         /**

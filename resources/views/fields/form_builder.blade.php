@@ -1,4 +1,4 @@
-@push('crud_fields_style')
+@push('after_style')
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css"></link>
 @endpush
 
@@ -17,10 +17,10 @@
     @endif
 @include('crud::fields.inc.wrapper_end')
 
-@push('crud_fields_scripts')
+@push('after_scripts')
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
-    <script src="{{ asset('js/form-builder/form-builder.js') }}"></script>
-    <script src="{{ asset('js/form-builder/form-render.js') }}"></script>
+    <script src="{{ asset('vendor/rafy-mora/formbuilder-field/js/form-builder.min.js') }}"></script>
+    <script src="{{ asset('vendor/rafy-mora/formbuilder-field/js/form-render.min.js') }}"></script>
     <script>
         jQuery(function ($) {
             var fbTemplate = document.getElementById("build-wrap");
