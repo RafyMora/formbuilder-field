@@ -10,7 +10,9 @@ class AddonServiceProvider extends ServiceProvider
 
     protected $vendorName = 'rafy-mora';
     protected $packageName = 'formbuilder-field';
-    protected $commands = [];
+    protected $commands = [
+        \RafyMora\FormbuilderField\Console\Commands\InitFormBuilderFieldInstallation::class
+    ];
 
     /**
      * Perform post-registration booting of services.
@@ -24,6 +26,13 @@ class AddonServiceProvider extends ServiceProvider
             file_exists($helpers = $this->packageHelpersFile())
         ) {
             require $helpers;
+        }
+
+        // Publishing the configuration file.
+        if ($this->packageDirectoryExistsAndIsNotEmpty('config')) {
+            $this->publishes([
+                $this->packageConfigFile() => $this->publishedConfigFile(),
+            ], 'config');
         }
 
         if ($this->packageDirectoryExistsAndIsNotEmpty('resources/lang')) {
@@ -70,5 +79,10 @@ class AddonServiceProvider extends ServiceProvider
         if (!empty($this->commands)) {
             $this->commands($this->commands);
         }
+    }
+    // register command for installation and other
+    public function register()
+    {
+        $this->commands($this->commands);
     }
 }

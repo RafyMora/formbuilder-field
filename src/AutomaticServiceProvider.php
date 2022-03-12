@@ -171,7 +171,7 @@ trait AutomaticServiceProvider
     }
 
     protected function publishedConfigFile() {
-        return config_path($this->vendorNameSlashPackageName().'.php');
+        return config_path($this->packageName.'.php');
     }
 
     protected function publishedAssetsPath() {

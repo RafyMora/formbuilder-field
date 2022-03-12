@@ -26,13 +26,13 @@ Install laravel environnement and backpack crud panel or add in your project.
 ### Via Composer
 
 ``` bash
+
+# package basic installation
 composer require rafy-mora/formbuilder-field
 
-php artisan migrate
+# Command to execute migration and publishing provider for finish installation
+php artisan formbuilderfield:installation
 
-php artisan vendor:publish --provider="RafyMora\FormbuilderField\AddonServiceProvider" --tag="config"
-
-php artisan vendor:publish --provider="RafyMora\FormbuilderField\AddonServiceProvider" --tag="assets"
 ```
 
 ## Usage

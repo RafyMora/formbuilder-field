@@ -16,7 +16,7 @@ class AddFormBuilderTables extends Migration
         Schema::create('fb_forms', function (Blueprint $table) {
             $table->id();
             $table->string('title', 255);
-            $table->text('description')->nullable();
+            $table->text('intro')->nullable();
             $table->text('form')->nullable();
             $table->boolean('in_database')->default(0);
             $table->boolean('by_mail')->default(0);
@@ -24,12 +24,11 @@ class AddFormBuilderTables extends Migration
         });
         Schema::create('fb_entries', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 255);
-            $table->text('description')->nullable();
-            $table->text('form')->nullable();
-            $table->boolean('in_database')->default(0);
-            $table->boolean('by_mail')->default(0);
+            $table->text('structure_form')->nullable();
+            $table->text('structure_result')->nullable();
+            $table->foreignId('fb_form_id');
             $table->timestamps();
+            $table->foreign('fb_form_id')->references('id')->on('fb_forms');
         });
     }
 

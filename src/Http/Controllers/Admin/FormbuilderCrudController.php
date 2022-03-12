@@ -28,9 +28,9 @@ class FormbuilderCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(Formbuilder::class);
+        CRUD::setModel(config('formbuilder-field.model_form'));
         CRUD::setRoute(config('backpack.base.route_prefix') . '/formbuilder');
-        CRUD::setEntityNameStrings('formbuilder', 'formbuilders');
+        CRUD::setEntityNameStrings(__('rafy-mora.formbuilder-field::formbuilder.labels.entity'), __('rafy-mora.formbuilder-field::formbuilder.labels.entities'));
     }
 
     /**
@@ -44,23 +44,28 @@ class FormbuilderCrudController extends CrudController
         $this->crud->addColumns([
             [
                 'name' => 'title',
+                'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.title')),
                 'type' => 'text',
             ],
             [
-                'name' => 'description',
+                'name' => 'intro',
+                'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.intro')),
                 'type' => 'text',
             ],
             [
                 'name' => 'form',
+                'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.form')),
                 'type' => 'text',
             ],
             [
                 'name' => 'in_database',
-                'type' => 'text',
+                'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.in_database')),
+                'type' => 'check',
             ],
             [
                 'name' => 'by_mail',
-                'type' => 'text',
+                'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.by_mail')),
+                'type' => 'check',
             ],
         ]);
     }
@@ -77,34 +82,40 @@ class FormbuilderCrudController extends CrudController
         $this->crud->addFields([
             [
                 'name' => 'title',
+                'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.title')),
                 'type' => 'text',
             ],
             [
-                'name' => 'description',
+                'name' => 'intro',
+                'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.intro')),
                 'type' => 'textarea',
             ],
             [
                 'name' => 'form',
                 'type' => 'form_builder',
+                'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.form')),
                 'view_namespace' => 'rafy-mora.formbuilder-field::fields',
-                'tab' => __('rafy-mora.formbuilder-field::formbuilder.form_tabs')
+                'tab' => __('rafy-mora.formbuilder-field::formbuilder.labels.form_tab')
             ],
             [
                 'name' => 'in_database',
-                'type' => 'boolean',
+                'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.in_database')),
+                'type' => 'select_from_array',
+                'options' => __('rafy-mora.formbuilder-field::formbuilder.labels.bool'),
+                'wrapper' => [
+                    'class' => 'form-group col-md-6'
+                ]
             ],
             [
                 'name' => 'by_mail',
-                'type' => 'boolean',
+                'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.by_mail')),
+                'type' => 'select_from_array',
+                'options' => __('rafy-mora.formbuilder-field::formbuilder.labels.bool'),
+                'wrapper' => [
+                    'class' => 'form-group col-md-6'
+                ]
             ],
         ]);
-        
-
-        /**
-         * Fields can be defined using the fluent syntax or array syntax:
-         * - CRUD::field('price')->type('number');
-         * - CRUD::addField(['name' => 'price', 'type' => 'number'])); 
-         */
     }
 
     /**

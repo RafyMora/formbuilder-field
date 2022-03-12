@@ -25,7 +25,9 @@ class FormbuilderRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+            'title' => 'required|min:5|max:255',
+            'intro' => 'nullable',
+            'form'  => 'required',
         ];
     }
 
@@ -37,7 +39,9 @@ class FormbuilderRequest extends FormRequest
     public function attributes()
     {
         return [
-            //
+            'title' => __('rafy-mora.formbuilder-field::formbuilder.labels.title'),
+            'intro' => __('rafy-mora.formbuilder-field::formbuilder.labels.intro'),
+            'form'  => __('rafy-mora.formbuilder-field::formbuilder.labels.form'),
         ];
     }
 
