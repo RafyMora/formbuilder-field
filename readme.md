@@ -1,8 +1,11 @@
-# Formbuilder Field For Backpack (dev)
+# Formbuilder Panel In Backpackforlaravel
 
-[![Latest Version on Packagist][ico-version]][link-packagist]
-[![Total Downloads][ico-downloads]][link-downloads]
-[![The Whole Fruit Manifesto](https://img.shields.io/badge/writing%20standard-the%20whole%20fruit-brightgreen)](https://github.com/the-whole-fruit/manifesto)
+[![GitHub version](https://badge.fury.io/gh/rafymora%formbuilder-field.svg)](https://github.com/rafymora/formbuilder-field)
+[![GitHub release](https://img.shields.io/github/release/rafymora/formbuilder-field.svg)](https://GitHub.com/rafymora/formbuilder-field/releases/)
+[![GitHub latest commit](https://badgen.net/github/last-commit/rafymora/formbuilder-field)](https://GitHub.com/rafymora/formbuilder-field/commit/)
+<!--- [![Latest Version on Packagist][ico-version]][link-packagist] -->
+<!--- [![Total Downloads][ico-downloads]][link-downloads] -->
+
 
 This package add form builder for projects that use the [Backpack for Laravel](https://backpackforlaravel.com/) administration panel.
 
