@@ -12,19 +12,26 @@ This package send form by mail or/and creater an enter in form_result database.
 
 ## Screenshots
 
-![Backpack Toggle Field Addon](https://github.com/RafyMora/formbuilder-field/blob/b43e7b6ab66d230b7e198ebce80d02071f482ae2/resources/assets/images/screenshot_2022-03-11.png)
+![Backpack Toggle Field Addon](https://github.com/RafyMora/formbuilder-field/blob/b95e8f82c8d8ebe86e65e6a559cd8af0b0ed5560/resources/assets/images/screenshot_2022-03-11.png)
 
+## Requirement
+
+This package it's compatible for Laravel 7.x|8.x, And bakcpackforlaravel 4.1|5.x
+It's juste an addon for backpack.
 
 ## Installation
 
-Via Composer
+Install laravel environnement and backpack crud panel or add in your project.
+
+### Via Composer
 
 ``` bash
-composer require --dev rafy-mora/formbuilder-field
+composer require rafy-mora/formbuilder-field
 
 php artisan migrate
 
 php artisan vendor:publish --provider="RafyMora\FormbuilderField\AddonServiceProvider" --tag="config"
+
 php artisan vendor:publish --provider="RafyMora\FormbuilderField\AddonServiceProvider" --tag="assets"
 ```
 
@@ -33,64 +40,18 @@ php artisan vendor:publish --provider="RafyMora\FormbuilderField\AddonServicePro
 > **// TODO: explain to your users how to use the functionality** this package provides; 
 > we've provided an example for a Backpack addon that provides a custom field
 
-To use the field this package provides, inside your custom CrudController do:
-
-```php
-$this->crud->addField([
-    'name' => 'agreed',
-    'label' => 'I agree to the terms and conditions',
-    'type' => 'new_field_name',
-    'view_namespace' => 'rafy-mora.formbuilder-field::fields',
-]);
-```
-
-Notice the ```view_namespace``` attribute - make sure that is exactly as above, to tell Backpack to load the field from this _addon package_, instead of assuming it's inside the _Backpack\CRUD package_.
-
-
 ## Overwriting
 
 > **// TODO: explain to your users how to overwrite the functionality this package provides;**
 > we've provided an example for a custom field
 
-If you need to change the field in any way, you can easily publish the file to your app, and modify that file any way you want. But please keep in mind that you will not be getting any updates.
-
-**Step 1.** Copy-paste the blade file to your directory:
-```bash
-# create the fields directory if it's not already there
-mkdir -p resources/views/vendor/backpack/crud/fields
-
-# copy the blade file inside the folder we created above
-cp -i vendor/rafy-mora/formbuilder-field/src/resources/views/fields/field_name.blade.php resources/views/vendor/backpack/crud/fields/field_name.blade.php
-```
-
-**Step 2.** Remove the vendor namespace wherever you've used the field:
-```diff
-$this->crud->addField([
-    'name' => 'agreed',
-    'type' => 'toggle',
-    'label' => 'I agree to the terms and conditions',
--   'view_namespace' => 'rafy-mora.formbuilder-field::fields'
-]);
-```
-
-**Step 3.** Uninstall this package. Since it only provides one file, and you're no longer using that file, it makes no sense to have the package installed:
-```bash
-composer remove rafy-mora/formbuilder-field
-```
-
 ## Change log
 
-Changes are documented here on Github. Please see the [Releases tab](https://github.com/rafy-mora/formbuilder-field/releases).
-
-## Testing
-
-``` bash
-composer test
-```
+>**// TODO: Changes are documented here on Github. Please see the [Releases tab](https://github.com/rafy-mora/formbuilder-field/releases).
 
 ## Contributing
 
-Please see [contributing.md](contributing.md) for a todolist and howtos.
+Just me for the moment
 
 ## Security
 
@@ -98,8 +59,7 @@ If you discover any security related issues, please email contact@raphael-mora.f
 
 ## Credits
 
-- [Raphael Mora][link-author]
-- [All Contributors][link-contributors]
+- Raphael Mora
 
 ## License
 
