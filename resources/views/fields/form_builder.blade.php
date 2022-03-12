@@ -39,8 +39,7 @@
             $(fbTemplate).formBuilder(options);
 
             // /**
-            //  * Toggles the edit mode for the demo
-            //  * @return {Boolean} editMode
+            //  * @TODO: save with same buton than CRUD
             //  */
             function toggleEdit(editing) {
                 document.body.classList.toggle("form-rendered", !editing);
