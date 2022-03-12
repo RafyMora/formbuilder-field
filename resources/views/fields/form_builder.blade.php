@@ -9,7 +9,7 @@
     <label>{!! $field['label'] !!}</label>
     <textarea name="{{ $field['name'] }}" id="result-build-wrap" style="display: none">{{ $data }}</textarea>
     <div id="build-wrap"></div>
-    <div class="render-wrap" style="border: 2px solid purple;padding:20px"></div>
+    <div class="render-wrap"></div>
 
     {{-- HINT --}}
     @if (isset($field['hint']))

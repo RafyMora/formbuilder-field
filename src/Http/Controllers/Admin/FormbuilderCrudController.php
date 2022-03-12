@@ -104,7 +104,8 @@ class FormbuilderCrudController extends CrudController
                 'options' => __('rafy-mora.formbuilder-field::formbuilder.labels.bool'),
                 'wrapper' => [
                     'class' => 'form-group col-md-6'
-                ]
+                ],
+                'tab' => __('rafy-mora.formbuilder-field::formbuilder.labels.config_tab')
             ],
             [
                 'name' => 'by_mail',
@@ -113,11 +114,34 @@ class FormbuilderCrudController extends CrudController
                 'options' => __('rafy-mora.formbuilder-field::formbuilder.labels.bool'),
                 'wrapper' => [
                     'class' => 'form-group col-md-6'
-                ]
+                ],
+                'tab' => __('rafy-mora.formbuilder-field::formbuilder.labels.config_tab')
+            ],
+            [
+                'name' => 'display_title',
+                'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.display_title')),
+                'type' => 'select_from_array',
+                'options' => __('rafy-mora.formbuilder-field::formbuilder.labels.bool'),
+                'wrapper' => [
+                    'class' => 'form-group col-md-6'
+                ],
+                'default'     => 1,
+                'tab' => __('rafy-mora.formbuilder-field::formbuilder.labels.config_tab')
+            ],
+            [
+                'name' => 'display_intro',
+                'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.display_intro')),
+                'type' => 'select_from_array',
+                'options' => __('rafy-mora.formbuilder-field::formbuilder.labels.bool'),
+                'wrapper' => [
+                    'class' => 'form-group col-md-6'
+                ],
+                'default'     => 1,
+                'tab' => __('rafy-mora.formbuilder-field::formbuilder.labels.config_tab')
             ],
         ]);
     }
-
+    
     /**
      * Define what happens when the Update operation is loaded.
      * 

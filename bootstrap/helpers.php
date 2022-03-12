@@ -1,9 +1,10 @@
 <?php
 
-// if (! function_exists('package_asset')) {
-//     function package_asset($path)
-//     {
-//         dd(public_path('vendor'));
-//         return asset('vendor/<your-github-id>/<package-name>' . '/' . $path);
-//     }
-// }
+if (! function_exists('renderForm')) {
+    function renderForm($id)
+    {
+        $form = \RafyMora\FormbuilderField\Models\Formbuilder::find($id);
+        $formData = (!empty($form->form)) ? $form->form : json_encode([]);
+        return view('rafy-mora.formbuilder-field::render_form', ['data' => $formData, 'form' => $form]);
+    }
+}

@@ -20,6 +20,8 @@ class AddFormBuilderTables extends Migration
             $table->text('form')->nullable();
             $table->boolean('in_database')->default(0);
             $table->boolean('by_mail')->default(0);
+            $table->boolean('display_title')->default(1);
+            $table->boolean('display_intro')->default(1);
             $table->timestamps();
         });
         Schema::create('fb_entries', function (Blueprint $table) {
