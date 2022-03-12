@@ -1,11 +1,11 @@
 # Formbuilder Panel In Backpackforlaravel
 
-[![GitHub version](https://badge.fury.io/gh/rafymora%formbuilder-field.svg)](https://github.com/rafymora/formbuilder-field)
-[![GitHub release](https://img.shields.io/github/release/rafymora/formbuilder-field.svg)](https://GitHub.com/rafymora/formbuilder-field/releases/)
-[![GitHub latest commit](https://badgen.net/github/last-commit/rafymora/formbuilder-field)](https://GitHub.com/rafymora/formbuilder-field/commit/)
+[![GitHub release](https://img.shields.io/github/release/RafyMora/formbuilder-field.svg?style=flat-square)](https://GitHub.com/RafyMora/formbuilder-field/releases/)
+[![GitHub latest commit](https://img.shields.io/github/last-commit/RafyMora/formbuilder-field.svg?style=flat-square)](https://github.com/RafyMora/formbuilder-field/commit/main/)
+[![Github all releases](https://img.shields.io/github/downloads/RafyMora/formbuilder-field/total.svg?style=flat-square)](https://GitHub.com/RafyMora/formbuilder-field/releases/)
+
 <!--- [![Latest Version on Packagist][ico-version]][link-packagist] -->
 <!--- [![Total Downloads][ico-downloads]][link-downloads] -->
-
 
 This package add form builder for projects that use the [Backpack for Laravel](https://backpackforlaravel.com/) administration panel.
 
@@ -18,6 +18,9 @@ This package send form by mail or/and creater an enter in form_result database.
 ![Backpack Toggle Field Addon](https://github.com/RafyMora/formbuilder-field/blob/b95e8f82c8d8ebe86e65e6a559cd8af0b0ed5560/resources/assets/images/screenshot_2022-03-11.png)
 
 ## Requirement
+
+[![Generic badge](https://img.shields.io/badge/backpackforlaravel->v4.1-blue.svg?style=flat-square)](https://backpackforlaravel.com/)
+[![Generic badge](https://img.shields.io/badge/php->v7.4-blue.svg?style=flat-square)](https://backpackforlaravel.com/)
 
 This package it's compatible for Laravel 7.x|8.x, And bakcpackforlaravel 4.1|5.x
 It's juste an addon for backpack.
