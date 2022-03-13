@@ -15,6 +15,7 @@ class AddFormBuilderTables extends Migration
     {
         Schema::create('fb_forms', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uniq_id');
             $table->string('title', 255);
             $table->text('intro')->nullable();
             $table->text('text_button');

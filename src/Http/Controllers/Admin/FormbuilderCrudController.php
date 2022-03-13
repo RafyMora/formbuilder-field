@@ -30,7 +30,7 @@ class FormbuilderCrudController extends CrudController
     {
         CRUD::setModel(config('formbuilder-field.model_form'));
         CRUD::setRoute(config('backpack.base.route_prefix') . '/formbuilder');
-        CRUD::setEntityNameStrings(__('rafy-mora.formbuilder-field::formbuilder.labels.entity'), __('rafy-mora.formbuilder-field::formbuilder.labels.entities'));
+        CRUD::setEntityNameStrings(__('rafy-mora.formbuilder-field::formbuilder.labels.entity_form'), __('rafy-mora.formbuilder-field::formbuilder.labels.entities_form'));
     }
 
     /**
@@ -42,6 +42,11 @@ class FormbuilderCrudController extends CrudController
     protected function setupListOperation()
     {
         $this->crud->addColumns([
+            [
+                'name' => 'uniq_id',
+                'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.title')),
+                'type' => 'text',
+            ],
             [
                 'name' => 'title',
                 'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.title')),
@@ -101,6 +106,14 @@ class FormbuilderCrudController extends CrudController
                     ]
                 ],
             ],
+            [
+                'name'       => 'uniq_id',
+                'label'      => 'ID Unique',
+                'default'    => uniqid(),
+                'attributes' => [
+                    'readonly' => 'readonly'
+                ],
+            ],
             // FORM BUILDER VIEW
             [
                 'name' => 'form',
@@ -126,6 +139,9 @@ class FormbuilderCrudController extends CrudController
                 'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.in_database')),
                 'type' => 'select_from_array',
                 'options' => __('rafy-mora.formbuilder-field::formbuilder.labels.bool'),
+                'attributes' => [
+                    'readonly'    => 'readonly'
+                ],
                 'wrapper' => [
                     'class' => 'form-group col-md-6'
                 ],
@@ -136,6 +152,9 @@ class FormbuilderCrudController extends CrudController
                 'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.by_mail')),
                 'type' => 'select_from_array',
                 'options' => __('rafy-mora.formbuilder-field::formbuilder.labels.bool'),
+                'attributes' => [
+                    'readonly'    => 'readonly'
+                ],
                 'wrapper' => [
                     'class' => 'form-group col-md-6'
                 ],
