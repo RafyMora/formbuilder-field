@@ -18,6 +18,7 @@ return [
         //
         // Form builder
         //
+        'uuid' => 'identifiant',
         'entity_form'         => 'formulaire',
         'entities_form'       => 'formulaires',
         'form_tab'            => 'Formulaire',
@@ -32,6 +33,9 @@ return [
         'display_intro'       => 'afficher le texte de description',
         'text_button'         => 'texte du bouton',
         'default_text_button' => 'Envoyer le formulaire',
+        'view_entries'        => 'Voir les entrées',
+        'created_at'          => 'date de création',
+        'updated_at'          => 'date de modification',
         //
         // Entity Form builder
         //
@@ -39,7 +43,8 @@ return [
         'entities_entry' => 'entrées de formulaire',
     ],
     'validations' => [
-        'form_not_found' => 'Aucun formulaire trouvé pour cette entrée.'
+        'form_not_found' => 'Aucun formulaire trouvé pour cette entrée.',
+        'success_db' => 'Nous avons bien reçut votre soumission.'
     ]
 
 ];

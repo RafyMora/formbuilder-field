@@ -2,8 +2,8 @@
 
 namespace RafyMora\FormbuilderField\Models;
 
-use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 
 class FormbuilderEntry extends Model
 {
@@ -34,7 +34,10 @@ class FormbuilderEntry extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-
+    public function formbuilder()
+    {
+        return $this->belongsTo(Formbuilder::class, 'fb_form_id');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

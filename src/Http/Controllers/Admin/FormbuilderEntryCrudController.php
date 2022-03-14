@@ -2,9 +2,10 @@
 
 namespace RafyMora\FormbuilderField\Http\Controllers\Admin;
 
-use RafyMora\FormbuilderField\Http\Requests\FormbuilderEntryRequest;
+use Illuminate\Support\Facades\Route;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use RafyMora\FormbuilderField\Http\Requests\FormbuilderEntryRequest;
 
 /**
  * Class FormbuilderentryCrudController
@@ -27,8 +28,14 @@ class FormbuilderEntryCrudController extends CrudController
     public function setup()
     {
         CRUD::setModel(\RafyMora\FormbuilderField\Models\FormbuilderEntry::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/formbuilderentry');
         CRUD::setEntityNameStrings(__('rafy-mora.formbuilder-field::formbuilder.labels.entity_entry'), __('rafy-mora.formbuilder-field::formbuilder.labels.entities_entry'));
+        $id_form = Route::current()->parameter('id_form');
+        if ($id_form) {
+            $this->crud->addClause('where', 'fb_form_id', '=', $id_form);
+            CRUD::setRoute(config('backpack.base.route_prefix') . '/formbuilder/' . $id_form . '/formbuilderentry');
+        } else {
+            CRUD::setRoute(config('backpack.base.route_prefix') . '/formbuilderentry');
+        }
     }
 
     /**
@@ -41,12 +48,14 @@ class FormbuilderEntryCrudController extends CrudController
     {
         $this->crud->addColumns([
             [
-                'name' => 'fb_form_id',
-                'label' => __('rafy-mora.formbuilder-field::formbuilder.labels.entity_form')
+                'name' => 'formbuilder.title',
+                'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.entity_form')),
+                'type' => 'text'
             ],
             [
                 'name' => 'created_at',
-                'type' => 'datetime'
+                'type' => 'datetime',
+                'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.created_at'))
             ]
         ]);
     }
@@ -61,12 +70,14 @@ class FormbuilderEntryCrudController extends CrudController
     {
         $this->crud->addColumns([
             [
-                'name' => 'fb_form_id',
-                'label' => __('rafy-mora.formbuilder-field::formbuilder.labels.entity_form')
+                'name' => 'formbuilder.title',
+                'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.entity_form')),
+                'type' => 'text'
             ],
             [
                 'name' => 'created_at',
-                'type' => 'datetime'
+                'type' => 'datetime',
+                'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.created_at'))
             ]
         ]);
     }

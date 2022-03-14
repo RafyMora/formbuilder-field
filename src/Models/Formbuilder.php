@@ -2,8 +2,8 @@
 
 namespace RafyMora\FormbuilderField\Models;
 
-use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 
 class Formbuilder extends Model
 {
@@ -28,13 +28,19 @@ class Formbuilder extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-
+    public function entriesList()
+    {
+        return '<a href="' . backpack_url('formbuilder/' . $this->id . '/formbuilderentry') . '" class="btn btn-sm btn-link"><i class="la la-bar-chart"></i> ' . __('rafy-mora.formbuilder-field::formbuilder.labels.view_entries') . '</a>';
+    }
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-
+    public function entries()
+    {
+        return $this->hasMany(FormbuilderEntry::class);
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

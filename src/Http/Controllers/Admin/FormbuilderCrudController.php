@@ -3,6 +3,7 @@
 namespace RafyMora\FormbuilderField\Http\Controllers\Admin;
 
 
+use Backpack\CRUD\app\Library\Widget;
 use RafyMora\FormbuilderField\Models\Formbuilder;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use RafyMora\FormbuilderField\Http\Requests\FormbuilderRequest;
@@ -31,6 +32,7 @@ class FormbuilderCrudController extends CrudController
         CRUD::setModel(config('formbuilder-field.model_form'));
         CRUD::setRoute(config('backpack.base.route_prefix') . '/formbuilder');
         CRUD::setEntityNameStrings(__('rafy-mora.formbuilder-field::formbuilder.labels.entity_form'), __('rafy-mora.formbuilder-field::formbuilder.labels.entities_form'));
+        $this->crud->addButtonFromModelFunction('line', 'entries_list', 'entriesList', 'beginning');
     }
 
     /**
@@ -41,10 +43,19 @@ class FormbuilderCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        // $widget_definition_array = [
+        //     'type'         => 'alert',
+        //     'class'        => 'alert alert-danger mb-2',
+        //     'heading'      => 'Important information!',
+        //     'content'      => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti nulla quas distinctio veritatis provident mollitia error fuga quis repellat, modi minima corporis similique, quaerat minus rerum dolorem asperiores, odit magnam.',
+        //     'close_button' => true, // show close button or not
+        // ];
+        // Widget::add($widget_definition_array)->to('before_content');
+
         $this->crud->addColumns([
             [
                 'name' => 'uniq_id',
-                'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.title')),
+                'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.uuid')),
                 'type' => 'text',
             ],
             [
@@ -63,15 +74,15 @@ class FormbuilderCrudController extends CrudController
                 'type' => 'check',
             ],
             [
-                'name' => 'display_title',
-                'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.display_title')),
-                'type' => 'check',
+                'name' => 'updated_at',
+                'type' => 'datetime',
+                'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.updated_at'))
             ],
             [
-                'name' => 'display_intro',
-                'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.display_intro')),
-                'type' => 'check',
-            ],
+                'name' => 'created_at',
+                'type' => 'datetime',
+                'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.created_at'))
+            ]
         ]);
     }
 

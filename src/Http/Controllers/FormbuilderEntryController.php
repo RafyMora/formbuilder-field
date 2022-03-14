@@ -43,23 +43,32 @@ class FormbuilderEntryController extends Controller
         if (empty($orginalForm)) {
             return Redirect::back()->withErrors(['message' => __('rafy-mora.formbuilder-field::formbuilder.validations.form_not_found')])->withInput();
         }
-        $error = false;
-        $fieldWithData = [];
-        $fields = json_decode($orginalForm->form);
-        foreach ($fields as $field) {
-            $field->userData = [$request->input($field->name)];
-            $fieldWithData[] = $field;
+        // Save entry in database
+        if ($orginalForm->in_database) {
+
+            $error = false;
+            $fieldWithData = [];
+            $fields = json_decode($orginalForm->form);
+            foreach ($fields as $field) {
+                $field->userData = [$request->input($field->name)];
+                $fieldWithData[] = $field;
+            }
+            if ($error === true) {
+                // @TODO: This redirect it's for custom validation 
+                return Redirect::back()->with(['dataError' => json_encode($fieldWithData)])->withInput();
+            }
+            $newForm = new FormbuilderEntry([
+                'structure_form' => $orginalForm->form,
+                'structure_result' => json_encode($fieldWithData),
+                'fb_form_id' => $orginalForm->id,
+            ]);
+            $newForm->save();
         }
-        if ($error === true) {
-            // @TODO: This redirect it's for custom validation 
-            return Redirect::back()->with(['dataError' => json_encode($fieldWithData)])->withInput();
+        // @TODO Send form by Mail
+        if ($orginalForm->by_mail) {
+            $mail_data = [];
+
         }
-        $newForm = new FormbuilderEntry([
-            'structure_form' => $orginalForm->form,
-            'structure_result' => json_encode($fieldWithData),
-            'fb_form_id' => $orginalForm->id,
-        ]);
-        $newForm->save();
-        return Redirect::back()->with(['success' => "GOOD JOB MOTHERFUCKER"]);
+        return Redirect::back()->with(['success' => __('rafy-mora.formbulder-field::formbuiler.validations.success_db')]);
     }
 }
