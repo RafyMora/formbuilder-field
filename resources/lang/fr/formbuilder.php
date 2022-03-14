@@ -15,6 +15,8 @@ return [
             0 => 'Non',
             1 => 'Oui',
         ],
+        'created_at'          => 'date de création',
+        'updated_at'          => 'date de modification',
         //
         // Form builder
         //
@@ -34,8 +36,6 @@ return [
         'text_button'         => 'texte du bouton',
         'default_text_button' => 'Envoyer le formulaire',
         'view_entries'        => 'Voir les entrées',
-        'created_at'          => 'date de création',
-        'updated_at'          => 'date de modification',
         //
         // Entity Form builder
         //
