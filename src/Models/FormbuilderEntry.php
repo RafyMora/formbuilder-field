@@ -5,7 +5,7 @@ namespace RafyMora\FormbuilderField\Models;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 
-class Formbuilder extends Model
+class FormbuilderEntry extends Model
 {
     use CrudTrait;
 
@@ -15,7 +15,7 @@ class Formbuilder extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'fb_forms';
+    protected $table = 'fb_entries';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
@@ -28,18 +28,15 @@ class Formbuilder extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-    public function entriesList()
-    {
-        return '<a href="' . backpack_url('formbuilder/' . $this->id . '/formbuilderentry') . '" class="btn btn-sm btn-link"><i class="la la-bar-chart"></i> ' . __('rafy-mora.formbuilder-field::formbuilder.labels.view_entries') . '</a>';
-    }
+
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-    public function entries()
+    public function formbuilder()
     {
-        return $this->hasMany(FormbuilderEntry::class);
+        return $this->belongsTo(Formbuilder::class, 'fb_form_id');
     }
     /*
     |--------------------------------------------------------------------------

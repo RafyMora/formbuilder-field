@@ -2,9 +2,10 @@
 
 namespace RafyMora\FormbuilderField\Http\Requests;
 
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Foundation\Http\FormRequest;
 
-class FormbuilderRequest extends FormRequest
+class FormbuilderEntryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,8 +14,7 @@ class FormbuilderRequest extends FormRequest
      */
     public function authorize()
     {
-        // only allow updates if the user is logged in
-        return backpack_auth()->check();
+        return true;
     }
 
     /**
@@ -25,10 +25,9 @@ class FormbuilderRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'       => 'required|min:3|max:255',
-            'intro'       => 'nullable',
-            'form'        => 'required',
-            'text_button' => 'required|min:1|max:255',
+            'original-form' => 'required',
+            '_token'        => 'required',
+            'submit'        => 'required',
         ];
     }
 
@@ -40,10 +39,7 @@ class FormbuilderRequest extends FormRequest
     public function attributes()
     {
         return [
-            'title'       => __('rafy-mora.formbuilder-field::formbuilder.labels.title'),
-            'intro'       => __('rafy-mora.formbuilder-field::formbuilder.labels.intro'),
-            'form'        => __('rafy-mora.formbuilder-field::formbuilder.labels.form'),
-            'text_button' => __('rafy-mora.formbuilder-field::formbuilder.labels.text_button'),
+            // custom attribute
         ];
     }
 
@@ -54,8 +50,8 @@ class FormbuilderRequest extends FormRequest
      */
     public function messages()
     {
-        return [
-            //
-        ];
+        return array_merge(__('validation'), [
+            // custom message
+        ]);
     }
 }

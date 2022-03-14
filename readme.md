@@ -32,19 +32,21 @@ Install laravel environnement and backpack crud panel or add in your project.
 ### Via Composer
 
 ``` bash
-
 # package basic installation
 composer require rafy-mora/formbuilder-field
 
 # Command to execute migration and publishing provider for finish installation
 php artisan formbuilderfield:installation
-
 ```
 
 ## Usage
 
-> **// TODO: explain to your users how to use the functionality** this package provides; 
-> we've provided an example for a Backpack addon that provides a custom field
+For display form, juste call an helper function with form's uuid.
+
+``` php
+// in blade or juste php
+{{ renderFormBuilder(<FORM_UUID>) }}
+```
 
 ## Overwriting
 

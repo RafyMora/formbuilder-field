@@ -9,7 +9,7 @@
     <label>{!! $field['label'] !!}</label>
     <textarea name="{{ $field['name'] }}" id="result-build-wrap" style="display: none">{{ $data }}</textarea>
     <div id="build-wrap"></div>
-    <div class="render-wrap" style="border: 2px solid purple;padding:20px"></div>
+    <div class="render-wrap"></div>
 
     {{-- HINT --}}
     @if (isset($field['hint']))
@@ -27,27 +27,27 @@
             var data = '{!! $data !!}';
 
             var options = {
+                controlPosition: 'left',
+                locale: '{{ config("app.locale") }}',
+                disabledActionButtons: ['data'],
+                editOnAdd: true,
+                stickyControls: {
+                    enable: true
+                },
+                disableFields: ['button','file','starRating'],
                 defaultFields: JSON.parse(data),
-                onSave: function (evt, formData) {
-                    console.log("formbuilder saved");
-                    toggleEdit(false);
-                    console.log({ formData });
-                    $(".render-wrap").formRender({ formData });
-                    $("#result-build-wrap").text(formData);
-                }
+                onSave: function (evt, formData) { saveForm(formData) }
             };
             $(fbTemplate).formBuilder(options);
 
-            // /**
-            //  * @TODO: save with same buton than CRUD
-            //  */
-            function toggleEdit(editing) {
-                document.body.classList.toggle("form-rendered", !editing);
+            /**
+             * @TODO: save with same buton than CRUD
+             */
+            function saveForm(formData) {
+                // toggleEdit(false);
+                $(".render-wrap").formRender({ formData });
+                $("#result-build-wrap").text(formData);
             }
-        
-            document.getElementById("edit-form").onclick = function () {
-                toggleEdit(true);
-            };
         });
     </script>
 @endpush
