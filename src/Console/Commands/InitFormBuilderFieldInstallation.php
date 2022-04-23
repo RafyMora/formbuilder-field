@@ -32,7 +32,7 @@ class InitFormBuilderFieldInstallation extends Command
         $name = __('rafy-mora.formbuilder-field::formbuilder.labels.entity');
         $nameTitle = ucfirst(Str::camel($name));
         $nameKebab = 'formbuilder';
-        $namePlural = ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.entities'));
+        $namePlural = ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.entities_form'));
 
         $this->call('migrate');
         
