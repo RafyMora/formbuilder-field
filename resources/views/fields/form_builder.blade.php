@@ -5,7 +5,6 @@
 @include('crud::fields.inc.wrapper_start')
 @php
     $data = (!empty($field["value"])) ? $field["value"] : json_encode([]);
-    // $data = json_encode([]);
 @endphp
     <label>{!! $field['label'] !!}</label>
     <textarea name="{{ $field['name'] }}" id="result-build-wrap" style="display: none">{{ $data }}</textarea>
@@ -25,7 +24,7 @@
     <script>
         jQuery(function ($) {
             var fbTemplate = document.getElementById("build-wrap");
-            var data = '{!! $data !!}';
+            var data = document.getElementById("result-build-wrap").value;
 
             var options = {
                 controlPosition: 'left',

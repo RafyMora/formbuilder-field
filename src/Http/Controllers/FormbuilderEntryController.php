@@ -50,8 +50,11 @@ class FormbuilderEntryController extends Controller
             $fieldWithData = [];
             $fields = json_decode($orginalForm->form);
             foreach ($fields as $field) {
-                $field->userData = [$request->input($field->name)];
-                $fieldWithData[] = $field;
+                // Escape no input form entry
+                if(isset($field->name)) {
+                    $field->userData = [$request->input($field->name)];
+                    $fieldWithData[] = $field;
+                }
             }
             if ($error === true) {
                 // @TODO: This redirect it's for custom validation 

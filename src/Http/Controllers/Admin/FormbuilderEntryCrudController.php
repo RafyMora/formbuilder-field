@@ -78,6 +78,12 @@ class FormbuilderEntryCrudController extends CrudController
                 'name' => 'created_at',
                 'type' => 'datetime',
                 'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.created_at'))
+            ],
+            [
+                'name' => 'structure_result',
+                'type' => 'view',
+                'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.form')),
+                'view' => 'rafy-mora.formbuilder-field::columns.form_builder_entry',
             ]
         ]);
     }
