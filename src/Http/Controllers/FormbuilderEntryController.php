@@ -69,6 +69,6 @@ class FormbuilderEntryController extends Controller
             $mail_data = [];
 
         }
-        return Redirect::back()->with(['success' => __('rafy-mora.formbulder-field::formbuiler.validations.success_db')]);
+        return Redirect::back()->with(['success' => __('rafy-mora.formbuilder-field::formbuilder.validations.success_db')]);
     }
 }
