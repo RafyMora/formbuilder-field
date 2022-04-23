@@ -5,6 +5,7 @@
 @include('crud::fields.inc.wrapper_start')
 @php
     $data = (!empty($field["value"])) ? $field["value"] : json_encode([]);
+    // $data = json_encode([]);
 @endphp
     <label>{!! $field['label'] !!}</label>
     <textarea name="{{ $field['name'] }}" id="result-build-wrap" style="display: none">{{ $data }}</textarea>
@@ -29,7 +30,8 @@
             var options = {
                 controlPosition: 'left',
                 locale: '{{ config("app.locale") }}',
-                disabledActionButtons: ['data'],
+                disabledActionButtons: ['data','save'],
+                scrollToFieldOnAdd: true,
                 editOnAdd: true,
                 stickyControls: {
                     enable: true
@@ -38,15 +40,18 @@
                 defaultFields: JSON.parse(data),
                 onSave: function (evt, formData) { saveForm(formData) }
             };
-            $(fbTemplate).formBuilder(options);
+            let fom = $(fbTemplate).formBuilder(options);
+            $("form").submit(function(e){
+                saveForm(fom.actions.getData('json'));
+            });
 
-            /**
-             * @TODO: save with same buton than CRUD
-             */
             function saveForm(formData) {
-                // toggleEdit(false);
-                $(".render-wrap").formRender({ formData });
+                // $(".render-wrap").formRender({ formData });
                 $("#result-build-wrap").text(formData);
+                new Noty({
+                    type: "success",
+                    text: '{{ __("rafy-mora.formbuilder-field::formbuilder.labels.form_saved") }}',
+                }).show();
             }
         });
     </script>

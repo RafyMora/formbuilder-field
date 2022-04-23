@@ -55,7 +55,7 @@ For display form, juste call an helper function with form's uuid.
 
 ## Change log
 
->**// TODO: Changes are documented here on Github. Please see the [Releases tab](https://github.com/rafy-mora/formbuilder-field/releases).
+>**// TODO: Changes are documented here on Github. Please see the [Releases tab](https://github.com/rafymora/formbuilder-field/releases).
 
 ## Contributing
 
@@ -81,5 +81,5 @@ However, please note that you do need Backpack installed, so you need to also ab
 
 [link-packagist]: https://packagist.org/packages/rafy-mora/formbuilder-field
 [link-downloads]: https://packagist.org/packages/rafy-mora/formbuilder-field
-[link-author]: https://github.com/rafy-mora
+[link-author]: https://github.com/rafymora
 [link-contributors]: ../../contributors

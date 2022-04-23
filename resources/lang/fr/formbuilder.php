@@ -20,7 +20,7 @@ return [
         //
         // Form builder
         //
-        'uuid' => 'identifiant',
+        'uuid'                => 'identifiant',
         'entity_form'         => 'formulaire',
         'entities_form'       => 'formulaires',
         'form_tab'            => 'Formulaire',
@@ -28,7 +28,8 @@ return [
         'title'               => 'titre',
         'intro'               => 'description',
         'form'                => 'formulaire',
-        'hint_form'           => 'Sauvgarder le formulaire avant d\'enregistrer votre page',
+        'form_saved'          => 'Le formulaire à bien été sauvegardé',
+        'hint_form'           => '',
         'in_database'         => 'enregistrer les entrées',
         'by_mail'             => 'envoyer par courriel',
         'display_title'       => 'afficher le titre du formulaire',
