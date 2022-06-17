@@ -2,7 +2,7 @@
 @yield('styles_fb')
 @stack('styles_fb')
 
-@yield('content')
+@yield('content_fb')
 
 @include('rafy-mora.formbuilder-field::partials.scripts')
 @yield('scripts_fb')

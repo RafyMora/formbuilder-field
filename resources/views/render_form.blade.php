@@ -1,7 +1,7 @@
 
 @extends('rafy-mora.formbuilder-field::layout')
 
-@section('content')
+@section('content_fb')
     <div class="col-md-12 bold-labels">
         @if($form->display_title)
             <h2>{{ $form->title }}</h2>
