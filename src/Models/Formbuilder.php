@@ -14,14 +14,8 @@ class Formbuilder extends Model
     | GLOBAL VARIABLES
     |--------------------------------------------------------------------------
     */
-
     protected $table = 'fb_forms';
-    // protected $primaryKey = 'id';
-    // public $timestamps = false;
     protected $guarded = ['id'];
-    // protected $fillable = [];
-    // protected $hidden = [];
-    // protected $dates = [];
 
     /*
     |--------------------------------------------------------------------------
@@ -32,6 +26,7 @@ class Formbuilder extends Model
     {
         return '<a href="' . backpack_url('formbuilder/' . $this->id . '/formbuilderentry') . '" class="btn btn-sm btn-link"><i class="la la-bar-chart"></i> ' . __('rafy-mora.formbuilder-field::formbuilder.labels.view_entries') . '</a>';
     }
+
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
@@ -41,21 +36,4 @@ class Formbuilder extends Model
     {
         return $this->hasMany(FormbuilderEntry::class);
     }
-    /*
-    |--------------------------------------------------------------------------
-    | SCOPES
-    |--------------------------------------------------------------------------
-    */
-
-    /*
-    |--------------------------------------------------------------------------
-    | ACCESSORS
-    |--------------------------------------------------------------------------
-    */
-
-    /*
-    |--------------------------------------------------------------------------
-    | MUTATORS
-    |--------------------------------------------------------------------------
-    */
 }

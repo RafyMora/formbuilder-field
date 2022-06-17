@@ -9,7 +9,7 @@
     <label>{!! $field['label'] !!}</label>
     <textarea name="{{ $field['name'] }}" id="result-build-wrap" style="display: none">{{ $data }}</textarea>
     <div id="build-wrap"></div>
-    <div class="render-wrap"></div>
+    {{-- <div class="render-wrap"></div> --}}
 
     {{-- HINT --}}
     @if (isset($field['hint']))
@@ -20,7 +20,7 @@
 @push('after_scripts')
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
     <script src="{{ asset('vendor/rafy-mora/formbuilder-field/js/form-builder.min.js') }}"></script>
-    <script src="{{ asset('vendor/rafy-mora/formbuilder-field/js/form-render.min.js') }}"></script>
+    {{-- <script src="{{ asset('vendor/rafy-mora/formbuilder-field/js/form-render.min.js') }}"></script> --}}
     <script>
         jQuery(function ($) {
             var fbTemplate = document.getElementById("build-wrap");
@@ -40,9 +40,9 @@
                 onSave: function (evt, formData) { saveForm(formData) }
             };
             let fom = $(fbTemplate).formBuilder(options);
-            $("form").submit(function(e){
-                saveForm(fom.actions.getData('json'));
-            });
+            // $("form").submit(function(e){
+            //     saveForm(fom.actions.getData('json'));
+            // });
 
             function saveForm(formData) {
                 // $(".render-wrap").formRender({ formData });

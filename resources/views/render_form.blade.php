@@ -44,7 +44,8 @@
     <script src="{{ asset('vendor/rafy-mora/formbuilder-field/js/form-render.min.js') }}"></script>
     <script>
         jQuery(function ($) {
-            var formData = '{!! $data !!}';
+            var formData = {!! $data !!};
+            console.log(formData);
             var renderWrap = $(".render-wrap").formRender({ formData });
         });
     </script>
