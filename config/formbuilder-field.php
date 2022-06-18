@@ -13,10 +13,13 @@ return [
         'https://code.jquery.com/ui/1.13.0/jquery-ui.min.js'
     ],
 
-    // enter the email for receipient if yout form are sending by mail
-    'email_destination' => config('mail.from.address', 'admin@test-laravel.com'),
-
-    'model_form'        => RafyMora\FormbuilderField\Models\Formbuilder::class,
-
-    'button_class' => 'btn btn-primary'
+    'model_form' => RafyMora\FormbuilderField\Models\Formbuilder::class,
+    
+    'button_class' => 'btn btn-primary',
+    
+    'email' => [
+        // enter the email for receipient if yout form are sending by mail
+        'form' => config('mail.from.address', 'admin-from@test-laravel.com'),
+        'to' => config('mail.from.address', 'admin-to@test-laravel.com'),
+    ]
 ];

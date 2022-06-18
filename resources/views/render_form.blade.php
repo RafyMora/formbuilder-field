@@ -45,7 +45,6 @@
     <script>
         jQuery(function ($) {
             var formData = {!! $data !!};
-            console.log(formData);
             var renderWrap = $(".render-wrap").formRender({ formData });
         });
     </script>

@@ -4,10 +4,11 @@ namespace RafyMora\FormbuilderField\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
-use RafyMora\FormbuilderField\Models\Formbuilder;
 use RafyMora\FormbuilderField\Models\FormbuilderEntry;
+use RafyMora\FormbuilderField\Mail\MailFormBuilderEntry;
 use RafyMora\FormbuilderField\Http\Requests\FormbuilderEntryRequest;
 
 class FormbuilderEntryController extends Controller
@@ -39,7 +40,7 @@ class FormbuilderEntryController extends Controller
         if ($validator->fails()) {
             return Redirect::back()->withErrors($validator)->withInput();
         }
-        $orginalForm = Formbuilder::where('uniq_id', $request->input('original-form'))->first();
+        $orginalForm = config('formbuilder-field.model_form')::where('uniq_id', $request->input('original-form'))->first();
         if (empty($orginalForm)) {
             return Redirect::back()->withErrors(['message' => __('rafy-mora.formbuilder-field::formbuilder.validations.form_not_found')])->withInput();
         }
@@ -61,16 +62,20 @@ class FormbuilderEntryController extends Controller
                 return Redirect::back()->with(['dataError' => json_encode($fieldWithData)])->withInput();
             }
             $newForm = new FormbuilderEntry([
-                'structure_form' => $orginalForm->form,
+                'structure_form'   => $orginalForm->form,
                 'structure_result' => json_encode($fieldWithData),
-                'fb_form_id' => $orginalForm->id,
+                'fb_form_id'       => $orginalForm->id,
             ]);
             $newForm->save();
         }
         // @TODO Send form by Mail
         if ($orginalForm->by_mail) {
             $mail_data = [];
-
+            $mail_data['content_form'] = json_decode($newForm->structure_result);
+            $mail_data['form_entry']   = $newForm;
+            $mail_data['orginal_form'] = json_decode($orginalForm);
+            Mail::to(config('formbuilder-field.email.to'))->send(new MailFormBuilderEntry($mail_data));
+            // return (new MailFormBuilderEntry($mail_data));
         }
         return Redirect::back()->with(['success' => __('rafy-mora.formbuilder-field::formbuilder.validations.success_db')]);
     }

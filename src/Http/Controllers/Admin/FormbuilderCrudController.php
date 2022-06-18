@@ -160,9 +160,6 @@ class FormbuilderCrudController extends CrudController
                 'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.by_mail')),
                 'type' => 'select_from_array',
                 'options' => __('rafy-mora.formbuilder-field::formbuilder.labels.bool'),
-                'attributes' => [
-                    'readonly'    => 'readonly'
-                ],
                 'wrapper' => [
                     'class' => 'form-group col-md-6'
                 ],

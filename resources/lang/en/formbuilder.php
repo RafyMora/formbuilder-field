@@ -46,6 +46,9 @@ return [
     'validations' => [
         'form_not_found' => 'No form found for this entry.',
         'success_db'     => 'We have received your submission.'
+    ],
+    'emails' => [
+        'default_subject' => 'New form'
     ]
 
 ];

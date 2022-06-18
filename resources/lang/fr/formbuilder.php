@@ -45,7 +45,15 @@ return [
     ],
     'validations' => [
         'form_not_found' => 'Aucun formulaire trouvé pour cette entrée.',
-        'success_db' => 'Nous avons bien reçut votre soumission.'
+        'success_db'     => 'Nous avons bien reçut votre soumission.'
+    ],
+    'emails' => [
+        'default_subject' => 'Nouveau formulaire reçut',
+        'no_data'         => 'Champs non renseigné',
+        'admin_line_1'    => '<p>Bonjour,<br>vous avez reçut une nouvelles entrée dans votre formulaire :form_title</p>',
+        'admin_line_2'    => '<p>Voici le contenue du formulaire :</p>',
+        'admin_line_3'    => '<p>L\'utilisateur a bien reçut la notification.</p>',
+        'admin_line_4'    => '<p>L\'entré à été sauvegarder et est accessible depuis l\'administration <a target="_blank" href=":url_admin">accessible ici.</a></p>',
     ]
 
 ];
