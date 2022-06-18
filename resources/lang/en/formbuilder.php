@@ -48,7 +48,12 @@ return [
         'success_db'     => 'We have received your submission.'
     ],
     'emails' => [
-        'default_subject' => 'New form'
+        'default_subject' => 'New form submission',
+        'no_data'         => 'Field not filled',
+        'admin_line_1'    => '<p>Hello,<br>you have received a new entry in your form :form_title</p>',
+        'admin_line_2'    => '<p>Here are the contents of the form:</p>',
+        'admin_line_3'    => '<p>The user has received the notification.</p>',
+        'admin_line_4'    => '<p>The entry has been saved and is accessible from the administration <a target="_blank" href=":url_admin">accessible here.</a></p>',
     ]
 
 ];

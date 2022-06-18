@@ -50,8 +50,8 @@ class FormbuilderEntryRequest extends FormRequest
      */
     public function messages()
     {
-        return array_merge(__('validation'), [
-            // custom message
-        ]);
+        return [
+            //
+        ];
     }
 }
