@@ -29,6 +29,8 @@ class FormbuilderRequest extends FormRequest
             'intro'       => 'nullable',
             'form'        => 'required',
             'text_button' => 'required|min:1|max:255',
+            'mail_to'     => 'required_if:by_mail,1|max:255',
+            'field_mail_name'     => 'required_if:copy_user,1|max:255',
         ];
     }
 
@@ -44,6 +46,8 @@ class FormbuilderRequest extends FormRequest
             'intro'       => __('rafy-mora.formbuilder-field::formbuilder.labels.intro'),
             'form'        => __('rafy-mora.formbuilder-field::formbuilder.labels.form'),
             'text_button' => __('rafy-mora.formbuilder-field::formbuilder.labels.text_button'),
+            'mail_to'     => __('rafy-mora.formbuilder-field::formbuilder.labels.mail_to'),
+            'by_mail'     => __('rafy-mora.formbuilder-field::formbuilder.labels.by_mail'),
         ];
     }
 
@@ -55,7 +59,8 @@ class FormbuilderRequest extends FormRequest
     public function messages()
     {
         return [
-            //
+            'mail_to.required_if'         => __('rafy-mora.formbuilder-field::formbuilder.validations.mail_to'),
+            'field_mail_name.required_if' => __('rafy-mora.formbuilder-field::formbuilder.validations.field_mail_name'),
         ];
     }
 }

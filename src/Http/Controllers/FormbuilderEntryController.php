@@ -68,15 +68,30 @@ class FormbuilderEntryController extends Controller
             ]);
             $newForm->save();
         }
-        // @TODO Send form by Mail
-        if ($orginalForm->by_mail) {
-            $mail_data = [];
-            $mail_data['content_form'] = json_decode($newForm->structure_result);
-            $mail_data['form_entry']   = $newForm;
-            $mail_data['orginal_form'] = json_decode($orginalForm);
-            Mail::to(config('formbuilder-field.email.to'))->send(new MailFormBuilderEntry($mail_data));
-            // return (new MailFormBuilderEntry($mail_data));
+        $data_admin = [];
+        if ($orginalForm->copy_user) {
+            $data_user  = [];
+            $data_user['content_form'] = json_decode($newForm->structure_result);
+            $data_user['form_entry']   = $newForm;
+            $data_user['orginal_form'] = $orginalForm;
+            $mail_to = collect($data_user['content_form'])->where('name', $orginalForm->field_mail_name)->first();
+            
+            if(empty($mail_to) || empty($mail_to->userData[0]) || (!empty($mail_to->userData[0]) && !filter_var($mail_to->userData[0], FILTER_VALIDATE_EMAIL))) {
+                $data_admin['error_mail_user'] = __('rafy-mora.formbuilder-field::formbuilder.emails.error_mail_user');
+            } else {
+                Mail::to($mail_to->userData[0])->send(new MailFormBuilderEntry('rafy-mora.formbuilder-field::emails.user_template', $data_user));
+                // return (new MailFormBuilderEntry('rafy-mora.formbuilder-field::emails.user_template', $data_user));
+            }
         }
+        if ($orginalForm->by_mail) {
+            $data_admin['content_form'] = json_decode($newForm->structure_result);
+            $data_admin['form_entry']   = $newForm;
+            $data_admin['orginal_form'] = $orginalForm;
+            $mail_to = (!empty($orginalForm->mail_to)) ? array_filter(explode(',', $orginalForm->mail_to)) : config('formbuilder-field.email.to');
+            Mail::to($mail_to)->send(new MailFormBuilderEntry('rafy-mora.formbuilder-field::emails.entry_template', $data_admin));
+            // return (new MailFormBuilderEntry('rafy-mora.formbuilder-field::emails.entry_template', $data_admin));
+        }
+
         return Redirect::back()->with(['success' => __('rafy-mora.formbuilder-field::formbuilder.validations.success_db')]);
     }
 }
