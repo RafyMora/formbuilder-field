@@ -139,6 +139,21 @@
         color: #3498db;
         text-decoration: underline; 
     }
+    thead.data-form {
+        font-weight: bold;
+        text-align: center;
+        background-color: #4e4e4e;
+        color: #fff;
+    }
+    table.data-form {
+        margin-bottom: 25px;
+    }
+    tbody.data-form tr:nth-child(odd) {
+        background-color: #c7c7c7;
+    }
+    tbody.data-form ul {
+        padding-left: 0;
+    }
     
     /* -------------------------------------
     BUTTONS

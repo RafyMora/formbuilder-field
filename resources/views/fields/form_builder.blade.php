@@ -40,9 +40,9 @@
                 onSave: function (evt, formData) { saveForm(formData) }
             };
             let fom = $(fbTemplate).formBuilder(options);
-            // $("form").submit(function(e){
-            //     saveForm(fom.actions.getData('json'));
-            // });
+            $("form").submit(function(e){
+                saveForm(fom.actions.getData('json'));
+            });
 
             function saveForm(formData) {
                 // $(".render-wrap").formRender({ formData });

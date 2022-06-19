@@ -100,6 +100,20 @@ class FormbuilderCrudController extends CrudController
                 'name' => 'title',
                 'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.title')),
                 'type' => 'text',
+                'wrapper' => [
+                    'class' => 'form-group col-md-8'
+                ],
+            ],
+            [
+                'name'       => 'uniq_id',
+                'label'      => 'ID Unique',
+                'default'    => uniqid(),
+                'attributes' => [
+                    'readonly' => 'readonly'
+                ],
+                'wrapper' => [
+                    'class' => 'form-group col-md-4'
+                ],
             ],
             [
                 'name' => 'intro',
@@ -117,22 +131,13 @@ class FormbuilderCrudController extends CrudController
                     ]
                 ],
             ],
-            [
-                'name'       => 'uniq_id',
-                'label'      => 'ID Unique',
-                'default'    => uniqid(),
-                'attributes' => [
-                    'readonly' => 'readonly'
-                ],
-            ],
             // FORM BUILDER VIEW
             [
                 'name' => 'form',
                 'type' => 'form_builder',
                 'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.form')),
                 'view_namespace' => 'rafy-mora.formbuilder-field::fields',
-                'tab' => __('rafy-mora.formbuilder-field::formbuilder.labels.form_tab'),
-                'hint' => __('rafy-mora.formbuilder-field::formbuilder.labels.hint_form')
+                'tab' => __('rafy-mora.formbuilder-field::formbuilder.labels.form_tab')
             ],
             // CONFIG TABS
             [
@@ -148,16 +153,6 @@ class FormbuilderCrudController extends CrudController
             [
                 'name' => 'in_database',
                 'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.in_database')),
-                'type' => 'select_from_array',
-                'options' => __('rafy-mora.formbuilder-field::formbuilder.labels.bool'),
-                'wrapper' => [
-                    'class' => 'form-group col-md-6'
-                ],
-                'tab' => __('rafy-mora.formbuilder-field::formbuilder.labels.config_tab')
-            ],
-            [
-                'name' => 'by_mail',
-                'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.by_mail')),
                 'type' => 'select_from_array',
                 'options' => __('rafy-mora.formbuilder-field::formbuilder.labels.bool'),
                 'wrapper' => [
@@ -186,6 +181,121 @@ class FormbuilderCrudController extends CrudController
                 ],
                 'default'     => 1,
                 'tab' => __('rafy-mora.formbuilder-field::formbuilder.labels.config_tab')
+            ],
+            // NOTIFICATIONS TABS
+            [
+                'name'  => 'separator_email_admin',
+                'type'  => 'custom_html',
+                'value' => __('rafy-mora.formbuilder-field::formbuilder.labels.notification_admin'),
+                'tab' => __('rafy-mora.formbuilder-field::formbuilder.labels.notifications_tab')
+            ],
+            // Admin
+            [
+                'name'    => 'by_mail',
+                'label'   => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.by_mail')),
+                'type'    => 'select_from_array',
+                'options' => __('rafy-mora.formbuilder-field::formbuilder.labels.bool'),
+                'wrapper' => [
+                    'class' => 'form-group col-md-6'
+                ],
+                'tab' => __('rafy-mora.formbuilder-field::formbuilder.labels.notifications_tab')
+            ],
+            [
+                'name'    => 'mail_to',
+                'label'   => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.mail_to')),
+                'hint'   => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.hints.mail_to')),
+                'type'    => 'text',
+                'wrapper' => ['class' => 'form-group col-md-6'],
+                'attributes' => ['placeholder' => config('formbuilder-field.email.to')],
+                'tab'     => __('rafy-mora.formbuilder-field::formbuilder.labels.notifications_tab')
+            ],
+            [
+                'name'    => 'include_data',
+                'label'   => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.include_data')),
+                'hint'    => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.hints.include_data')),
+                'type'    => 'select_from_array',
+                'options' => __('rafy-mora.formbuilder-field::formbuilder.labels.bool'),
+                'wrapper' => ['class' => 'form-group col-md-6'],
+                'tab'     => __('rafy-mora.formbuilder-field::formbuilder.labels.notifications_tab')
+            ],
+            [
+                'name'       => 'subject_admin',
+                'label'      => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.subject_admin')),
+                // 'hint'       => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.hints.subject_admin')),
+                'type'       => 'text',
+                'wrapper'    => ['class' => 'form-group col-md-6'],
+                'attributes' => ['placeholder' => __('rafy-mora.formbuilder-field::formbuilder.emails.default_subject', ['app_name' => config('app.name')])],
+                'tab'        => __('rafy-mora.formbuilder-field::formbuilder.labels.notifications_tab')
+            ],
+            [
+                'name'    => 'message_admin',
+                'label'   => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.message_admin')),
+                'hint'    => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.hints.message_admin')),
+                'type'    => 'summernote',
+                'options' => [
+                    'toolbar' => [
+                        ['style', ['bold', 'italic', 'underline', 'clear']],
+                        ['insert', ['link', 'hr']],
+                        ['fontsize', ['fontsize']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['height', ['height']]
+                    ],
+                    'placeholder' =>  __('rafy-mora.formbuilder-field::formbuilder.emails.message_admin', ['form_title' => ''])
+                ],
+                'tab' => __('rafy-mora.formbuilder-field::formbuilder.labels.notifications_tab')
+            ],
+            // User
+            [
+                'name'  => 'separator_email_user',
+                'type'  => 'custom_html',
+                'value' => __('rafy-mora.formbuilder-field::formbuilder.labels.notification_user'),
+                'tab'   => __('rafy-mora.formbuilder-field::formbuilder.labels.notifications_tab')
+            ],
+            [
+                'name'    => 'copy_user',
+                'label'   => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.copy_user')),
+                'type'    => 'select_from_array',
+                'options' => __('rafy-mora.formbuilder-field::formbuilder.labels.bool'),
+                'wrapper' => [
+                    'class' => 'form-group col-md-6'
+                ],
+                'tab' => __('rafy-mora.formbuilder-field::formbuilder.labels.notifications_tab')
+            ],
+            [
+                'name'    => 'field_mail_name',
+                'label'   => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.field_mail_name')),
+                'hint'    => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.hints.field_mail_name')),
+                'type'    => 'text',
+                'wrapper' => ['class' => 'form-group col-md-6'],
+                'tab'     => __('rafy-mora.formbuilder-field::formbuilder.labels.notifications_tab')
+            ],
+            [
+                'name'       => 'subject_user',
+                'label'      => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.subject_user')),
+                // 'hint'       => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.hints.subject_user')),
+                'type'       => 'text',
+                'wrapper'    => ['class' => 'form-group col-md-6'],
+                'attributes' => ['placeholder' => __('rafy-mora.formbuilder-field::formbuilder.emails.default_subject', ['app_name' => config('app.name')])],
+                'tab'        => __('rafy-mora.formbuilder-field::formbuilder.labels.notifications_tab')
+            ],
+            [
+                'name'    => 'message_user',
+                'label'   => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.message_user')),
+                'hint'    => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.hints.message_user')),
+                'type'    => 'summernote',
+                'options' => [
+                    'toolbar' => [
+                        ['style', ['bold', 'italic', 'underline', 'clear']],
+                        ['insert', ['link', 'hr']],
+                        ['fontsize', ['fontsize']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['height', ['height']]
+                    ],
+                    'placeholder' =>  __('rafy-mora.formbuilder-field::formbuilder.emails.message_user', ['app_name' => config('app.name')])
+                ],
+                'tab' => __('rafy-mora.formbuilder-field::formbuilder.labels.notifications_tab')
             ],
         ]);
     }
