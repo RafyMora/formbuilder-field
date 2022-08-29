@@ -86,5 +86,7 @@ class FormbuilderEntryCrudController extends CrudController
                 'view' => 'rafy-mora.formbuilder-field::columns.form_builder_entry',
             ]
         ]);
+        $this->crud->removeColumn('structure_form');
+        $this->crud->removeColumn('fb_form_id');
     }
 }
