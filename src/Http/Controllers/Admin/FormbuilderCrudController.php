@@ -182,6 +182,17 @@ class FormbuilderCrudController extends CrudController
                 'default'     => 1,
                 'tab' => __('rafy-mora.formbuilder-field::formbuilder.labels.config_tab')
             ],
+            [
+                'name' => 'display_captcha',
+                'label' => ucfirst(__('rafy-mora.formbuilder-field::formbuilder.labels.display_captcha')),
+                'type' => 'select_from_array',
+                'options' => __('rafy-mora.formbuilder-field::formbuilder.labels.bool'),
+                'wrapper' => [
+                    'class' => 'form-group col-md-6'
+                ],
+                'default'     => 1,
+                'tab' => __('rafy-mora.formbuilder-field::formbuilder.labels.config_tab')
+            ],
             // NOTIFICATIONS TABS
             [
                 'name'  => 'separator_email_admin',
@@ -298,6 +309,10 @@ class FormbuilderCrudController extends CrudController
                 'tab' => __('rafy-mora.formbuilder-field::formbuilder.labels.notifications_tab')
             ],
         ]);
+
+        if (empty(config('formbuilder-field.captcha_v3_site_key')) || empty(config('formbuilder-field.captcha_v3_secret_key'))) {
+            $this->crud->field('display_captcha')->hint(__('rafy-mora.formbuilder-field::formbuilder.hints.captcha_config_error'))->attributes(['disabled' => 'disabled']);
+        }
     }
 
     /**

@@ -47,6 +47,7 @@ return [
         'subject_user'        => 'sujet du courriel',
         'message_user'        => 'introduction du courriel',
         'field_mail_name'     => 'identifiant du champs de formulaire',
+        'display_captcha'     => 'Activer le Captcha Google V3',
         //
         // Entity Form builder
         //
@@ -54,18 +55,19 @@ return [
         'entities_entry' => 'entrées de formulaire',
     ],
     'hints' => [
-        'mail_to'         => 'Entrer les courriels séparés par des virgules.',
-        'include_data'    => 'Les informations du formulaire seront envoyées avec la notification.',
-        'message_admin'   => 'Message d\'introduction du courriel avant les informations du formulaire.',
-        'message_user'    => 'Message d\'introduction du courriel avant les informations du formulaire.',
-        'field_mail_name' => 'Indiquer le nom du champs du formulaire contenant le courriel de l\'utilisateur (ligne "name" dans l\'édition du champ).',
-        // 'subject_admin' => 'Sujet inscrit dans le courriel.',
+        'mail_to'              => 'Entrer les courriels séparés par des virgules.',
+        'include_data'         => 'Les informations du formulaire seront envoyées avec la notification.',
+        'message_admin'        => 'Message d\'introduction du courriel avant les informations du formulaire.',
+        'message_user'         => 'Message d\'introduction du courriel avant les informations du formulaire.',
+        'field_mail_name'      => 'Indiquer le nom du champs du formulaire contenant le courriel de l\'utilisateur (ligne "name" dans l\'édition du champ).',
+        'captcha_config_error' => 'Merci de configurer le Google ReCaptcha V3 pour l\'activer.'
     ],
     'validations' => [
         'form_not_found'  => 'Aucun formulaire trouvé pour cette entrée.',
         'success_db'      => 'Nous avons bien reçut votre soumission.',
         'mail_to'         => 'Un courriel de destination est obligatoire pour l\'envoi par courriel.',
         'field_mail_name' => 'L\'identifiant du champs contenant le courriel de l\'utilisateur est obligatoire.',
+        'captcha_invalid' => 'Captcha non valide.'
     ],
     'emails' => [
         'default_subject' => 'Nouvelle soumission de formulaire | :app_name',

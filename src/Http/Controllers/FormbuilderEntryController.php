@@ -36,13 +36,19 @@ class FormbuilderEntryController extends Controller
     {
         $fbeRequest = new FormbuilderEntryRequest();
         $validator = Validator::make($request->all(), $fbeRequest->rules(), $fbeRequest->messages());
-        
+
         if ($validator->fails()) {
             return Redirect::back()->withErrors($validator)->withInput();
         }
         $orginalForm = config('formbuilder-field.model_form')::where('uniq_id', $request->input('original-form'))->first();
         if (empty($orginalForm)) {
             return Redirect::back()->withErrors(['message' => __('rafy-mora.formbuilder-field::formbuilder.validations.form_not_found')])->withInput();
+        }
+        // validate Google ReCaptcha V3
+        if (!empty(config('formbuilder-field.captcha_v3_site_key')) && !empty(config('formbuilder-field.captcha_v3_secret_key')) && !empty($orginalForm->display_captcha) && $request->has('g-recaptcha-response')) {
+            if(!$this->verifyReCaptcha($request->input('g-recaptcha-response'))) {
+                return Redirect::back()->withErrors(['message' => __('rafy-mora.formbuilder-field::formbuilder.validations.captcha_invalid')])->withInput();
+            }
         }
         // Save entry in database
         if ($orginalForm->in_database) {
@@ -93,5 +99,26 @@ class FormbuilderEntryController extends Controller
         }
 
         return Redirect::back()->with(['success' => __('rafy-mora.formbuilder-field::formbuilder.validations.success_db')]);
+    }
+
+    /**
+     * Verify if tokken captcha are good by google
+     * 
+     * @param string $recaptchaCode the token in request input form
+     * @return true/false
+     */
+    private function verifyReCaptcha(string $recaptchaCode){
+        $postdata = http_build_query(["secret" => config('formbuilder-field.captcha_v3_secret_key'),"response" => $recaptchaCode]);
+        $opts = ['http' =>
+            [
+                'method'  => 'POST',
+                'header'  => 'Content-type: application/x-www-form-urlencoded',
+                'content' => $postdata
+            ]
+        ];
+        $context = stream_context_create($opts);
+        $result  = file_get_contents('https://www.google.com/recaptcha/api/siteverify', false, $context);
+        $check   = json_decode($result);
+        return $check->success;
     }
 }

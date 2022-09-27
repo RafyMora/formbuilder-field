@@ -50,6 +50,10 @@ For display form, juste call an helper function with form's uuid.
 {{ renderFormBuilder(<FORM_UUID>) }}
 ```
 
+## Captcha V3
+
+If you want, you can add a google captcha v3 (invisible) by adding the two variables in the .env `FB_CAPTCHA_SITE_KEY` et `FB_CAPTCCHA_SECRET_KEY`.
+
 ## Overwriting
 
 > **// TODO: explain to your users how to overwrite the functionality this package provides;**
