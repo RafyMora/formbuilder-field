@@ -1,0 +1,86 @@
+{
+  "name": "formbuilder-languages",
+  "version": "1.2.0",
+  "description": "Language files for formBuilder",
+  "main": "index.js",
+  "files": [
+    "*.lang",
+    "index.js",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "lint": "biome lint index.js",
+    "format": "biome check --apply index.js",
+    "semantic-release": "semantic-release",
+    "test": "node --test --no-warnings",
+    "prepare": "lefthook install",
+    "postmerge": "lefthook install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinchappell/formBuilder-languages.git"
+  },
+  "keywords": [
+    "formBuilder",
+    "lang",
+    "files",
+    "i18n"
+  ],
+  "author": "Kevin Chappell <kevin.b.chappell@gmail.com> (https://kevin-chappell.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kevinchappell/formBuilder-languages/issues"
+  },
+  "homepage": "https://github.com/kevinchappell/formBuilder-languages#readme",
+  "dependencies": {
+    "mi18n": "^0.4.8"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.7.3",
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/npm": "^12.0.1",
+    "lefthook": "^1.6.13",
+    "semantic-release": "^23.1.1"
+  },
+  "release": {
+    "branch": "master",
+    "verifyConditions": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git"
+    ],
+    "prepare": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "rules": {
+      "type-enum": [
+        2,
+        "always",
+        [
+          "build",
+          "chore",
+          "ci",
+          "docs",
+          "feat",
+          "fix",
+          "perf",
+          "refactor",
+          "revert",
+          "style",
+          "test"
+        ]
+      ]
+    }
+  }
+}

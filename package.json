@@ -1,0 +1,26 @@
+{
+  "name": "formbuilder-field",
+  "version": "1.0.0",
+  "description": "[![GitHub release](https://img.shields.io/github/release/RafyMora/formbuilder-field.svg?style=flat-square)](https://GitHub.com/RafyMora/formbuilder-field/releases/) [![GitHub latest commit](https://img.shields.io/github/last-commit/RafyMora/formbuilder-field.svg?style=flat-square)](https://github.com/RafyMora/formbuilder-field/commit/main/) [![Github all releases](https://img.shields.io/github/downloads/RafyMora/formbuilder-field/total.svg?style=flat-square)](https://GitHub.com/RafyMora/formbuilder-field/releases/)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RafyMora/formbuilder-field.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RafyMora/formbuilder-field/issues"
+  },
+  "homepage": "https://github.com/RafyMora/formbuilder-field#readme",
+  "dependencies": {
+    "formBuilder": "^3.22.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.27.2"
+  }
+}

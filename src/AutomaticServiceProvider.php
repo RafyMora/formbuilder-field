@@ -40,9 +40,6 @@ trait AutomaticServiceProvider
         }
         
         if ($this->packageDirectoryExistsAndIsNotEmpty('resources/views')) {
-            // Load published views
-            $this->loadViewsFrom($this->publishedViewsPath(), $this->vendorNameDotPackageName());
-
             // Fallback to package views
             $this->loadViewsFrom($this->packageViewsPath(), $this->vendorNameDotPackageName());
         }
@@ -54,7 +51,7 @@ trait AutomaticServiceProvider
         if ($this->packageDirectoryExistsAndIsNotEmpty('routes')) {
             $this->loadRoutesFrom($this->packageRoutesFile());   
         }
-
+ 
         // Publishing is only necessary when using the CLI.
         if ($this->app->runningInConsole()) {
             $this->bootForConsole();
@@ -85,27 +82,6 @@ trait AutomaticServiceProvider
             $this->publishes([
                 $this->packageConfigFile() => $this->publishedConfigFile(),
             ], 'config');
-        }
-
-        // Publishing the views.
-        if ($this->packageDirectoryExistsAndIsNotEmpty('resources/views')) {
-            $this->publishes([
-                $this->packageViewsPath() => $this->publishedViewsPath(),
-            ], 'views');
-        }
-
-        // Publishing assets.
-        if ($this->packageDirectoryExistsAndIsNotEmpty('resources/assets')) {
-            $this->publishes([
-                $this->packageAssetsPath() => $this->publishedAssetsPath(),
-            ], 'assets');
-        }
-
-        // Publishing the translation files.
-        if ($this->packageDirectoryExistsAndIsNotEmpty('resources/lang')) {
-            $this->publishes([
-                $this->packageLangsPath() => $this->publishedLangsPath(),
-            ], 'lang');
         }
 
         // Registering package commands.
@@ -156,6 +132,9 @@ trait AutomaticServiceProvider
 
     protected function packageRoutesFile() {
         return $this->path.'/routes/'.$this->packageName.'.php';
+    }
+    protected function packageAsssetsRoutesFile() {
+        return $this->path.'/routes/assets.php';
     }
 
     protected function packageHelpersFile() {
