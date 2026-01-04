@@ -107,7 +107,8 @@ class FormbuilderEntryController extends Controller
      * @param string $recaptchaCode the token in request input form
      * @return true/false
      */
-    private function verifyReCaptcha(string $recaptchaCode){
+    private function verifyReCaptcha(string $recaptchaCode)
+    {
         $postdata = http_build_query(["secret" => config('formbuilder-field.captcha_v3_secret_key'),"response" => $recaptchaCode]);
         $opts = ['http' =>
             [

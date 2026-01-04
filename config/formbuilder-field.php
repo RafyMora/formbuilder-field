@@ -13,6 +13,8 @@ return [
         'https://code.jquery.com/ui/1.13.0/jquery-ui.min.js'
     ],
 
+    'languages' => 'fr-FR',
+    
     'model_form' => RafyMora\FormbuilderField\Models\Formbuilder::class,
     
     'button_class' => 'btn btn-primary',

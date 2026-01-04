@@ -19,8 +19,7 @@
 
 @push('after_scripts')
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
-    <script src="{{ asset('vendor/rafy-mora/formbuilder-field/js/form-builder.min.js') }}"></script>
-    {{-- <script src="{{ asset('vendor/rafy-mora/formbuilder-field/js/form-render.min.js') }}"></script> --}}
+    <script src="/formbuilder-field/js/form-builder.min.js"></script>
     <script>
         jQuery(function ($) {
             var fbTemplate = document.getElementById("build-wrap");
@@ -28,7 +27,10 @@
 
             var options = {
                 controlPosition: 'left',
-                locale: '{{ config("app.locale") }}',
+                i18n: {
+                    location: '/formbuilder-field/lang',
+                    locale: '{{ config("formbuilder-field.languages") }}'
+                },
                 disabledActionButtons: ['data','save'],
                 scrollToFieldOnAdd: true,
                 editOnAdd: true,

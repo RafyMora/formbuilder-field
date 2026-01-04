@@ -65,7 +65,7 @@
         </script>
     @endif
 
-    <script src="{{ asset('vendor/rafy-mora/formbuilder-field/js/form-render.min.js') }}"></script>
+    <script src="/formbuilder-field/js/form-render.min.js"></script>
     <script>
         jQuery(function ($) {
             var formData = {!! $data !!};
