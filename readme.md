@@ -21,11 +21,12 @@ This package send form by mail or/and creater an enter in form_result database.
 
 ## Requirement
 
-[![Generic badge](https://img.shields.io/badge/backpackforlaravel->v4.1-blue.svg?style=flat-square)](https://backpackforlaravel.com/)
-[![Generic badge](https://img.shields.io/badge/php->v7.4-blue.svg?style=flat-square)](https://backpackforlaravel.com/)
+[![Generic badge](https://img.shields.io/badge/backpackforlaravel->v7.x-blue.svg?style=flat-square)](https://backpackforlaravel.com/)
+[![Generic badge](https://img.shields.io/badge/laravel->v10.x-blue.svg?style=flat-square)](https://laravel.com/)
+[![Generic badge](https://img.shields.io/badge/php->v8.2-blue.svg?style=flat-square)](https://backpackforlaravel.com/)
 
-This package it's compatible for Laravel 7.x|8.x, And bakcpackforlaravel 4.1|5.x
-It's juste an addon for backpack.
+This package it's compatible for Laravel 10.x and newest, And bakcpackforlaravel 7.x
+It's juste an addon for backpackforlaravel admin panel. All features doesn't need backpackforlaravel Pro version.
 
 ## Installation
 
@@ -52,7 +53,7 @@ For display form, juste call an helper function with form's uuid.
 
 ## Captcha V3
 
-If you want, you can add a google captcha v3 (invisible) by adding the two variables in the .env `FB_CAPTCHA_SITE_KEY` et `FB_CAPTCCHA_SECRET_KEY`.
+If you want, you can add a google captcha v3 (invisible) by adding the two variables in the .env `FB_CAPTCHA_SITE_KEY` et `FB_CAPTCCHA_SECRET_KEY` and activate this in your form settings.
 
 ## Overwriting
 
@@ -65,7 +66,7 @@ If you want, you can add a google captcha v3 (invisible) by adding the two varia
 
 ## Contributing
 
-Just me for the moment
+Just me ;)
 
 ## Security
 
